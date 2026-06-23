@@ -286,7 +286,7 @@ export default function App() {
           </div>
           <div>
             <h1 className="text-2xl font-black tracking-tight text-slate-800 font-display">
-              Kaggle Capstone <span className="text-indigo-600">Project</span>
+              Grant Match <span className="text-indigo-600">Agent</span>
             </h1>
             <p className="text-xs text-slate-500 font-medium">ReAct Protocol Multi-Agent Intelligence System</p>
           </div>
@@ -315,10 +315,12 @@ export default function App() {
       </header>
 
       {/* Bento Grid Main Container */}
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-12 auto-rows-auto gap-5 max-w-7xl w-full mx-auto flex-1">
+      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 auto-rows-auto gap-4 max-w-7xl w-full mx-auto flex-1">
         
-        {/* Bento Cell 1: Non-Profit Profile Template Selector (Row 1 - Span 3 cols) */}
-        <div className="xl:col-span-4 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between transition-all hover:shadow-md">
+        {/* ROW 1: Organization Presets | Workspace Selector | Profile Editor | Compliance Safeguards */}
+
+        {/* Bento Cell 1: Non-Profit Profile Template Selector */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[280px]">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="p-1.5 bg-indigo-50 rounded-lg text-indigo-600">
@@ -367,8 +369,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Bento Cell 2: Primary Sandbox and Flow Workspace Navigation (Row 1 - Span 4 cols) */}
-        <div className="xl:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between transition-all hover:shadow-md">
+        {/* Bento Cell 2: Primary Sandbox and Flow Workspace Navigation */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[280px]">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="p-1.5 bg-indigo-50 rounded-lg text-indigo-600">
@@ -451,26 +453,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Bento Cell 3: Live Success Statistics (Indigo Card style from Bento design) */}
-        <div className="xl:col-span-3 bg-indigo-600 text-white rounded-3xl p-6 shadow-md flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-indigo-200/50 hover:shadow-lg">
-          <div className="flex justify-between items-center">
-            <span className="text-indigo-100 text-xs font-bold uppercase tracking-wider font-mono">Secured Grants</span>
-            <div className="w-8 h-8 bg-indigo-500/50 rounded-full flex items-center justify-center text-sm font-bold">↗</div>
-          </div>
-          <div>
-            <div className="text-5xl font-black font-display tracking-tight leading-none mb-1">{successRateMock}</div>
-            <p className="text-indigo-100 text-[11px] leading-relaxed">
-              Mock platform success rate matching records this quarter across associated test accounts.
-            </p>
-          </div>
-          <div className="pt-3 border-t border-indigo-500/40 flex justify-between items-center text-[10px]">
-            <span className="text-indigo-200 font-semibold uppercase font-mono">Fit Status</span>
-            <span className="bg-emerald-500/30 text-emerald-100 px-2 py-0.5 rounded font-extrabold">98.3% optimal</span>
-          </div>
-        </div>
-
-        {/* Bento Cell 4: Organization Details Form (Span 4 cols) */}
-        <div className="xl:col-span-4 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between transition-all hover:shadow-md">
+        {/* Bento Cell 3: Organization Details Form (Profile Editor) */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[280px]">
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-slate-150 pb-3">
               <div className="flex items-center gap-2">
@@ -524,8 +508,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Bento Cell 5: Compliance Identity Fields Form (Span 4 cols - Private Fields) */}
-        <div className="xl:col-span-4 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between transition-all hover:shadow-md">
+        {/* Bento Cell 4: Compliance Identity Fields Form (Compliance Safeguards) */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[280px]">
           <div className="space-y-3.5">
             <div className="flex items-center gap-2 border-b border-slate-150 pb-3">
               <div className="p-1.5 bg-rose-50 rounded-lg text-rose-600">
@@ -579,8 +563,28 @@ export default function App() {
           </div>
         </div>
 
-        {/* Bento Cell 6: Matching Parameters Tracker (Span 2 cols - Budget Range) */}
-        <div className="xl:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between transition-all hover:shadow-md">
+        {/* ROW 2: Secured Grants | Target Range | URGENT DEADLINES | Index Logs */}
+
+        {/* Bento Cell 5: Live Success Statistics (Secured Grants) */}
+        <div className="lg:col-span-3 bg-indigo-600 text-white rounded-3xl p-5 shadow-md flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-indigo-200/50 hover:shadow-lg min-h-[160px]">
+          <div className="flex justify-between items-center">
+            <span className="text-indigo-100 text-xs font-bold uppercase tracking-wider font-mono">Secured Grants</span>
+            <div className="w-8 h-8 bg-indigo-500/50 rounded-full flex items-center justify-center text-sm font-bold">↗</div>
+          </div>
+          <div>
+            <div className="text-5xl font-black font-display tracking-tight leading-none mb-1">{successRateMock}</div>
+            <p className="text-indigo-100 text-[11px] leading-relaxed">
+              Mock platform success rate matching records this quarter across associated test accounts.
+            </p>
+          </div>
+          <div className="pt-3 border-t border-indigo-500/40 flex justify-between items-center text-[10px]">
+            <span className="text-indigo-200 font-semibold uppercase font-mono">Fit Status</span>
+            <span className="bg-emerald-500/30 text-emerald-100 px-2 py-0.5 rounded font-extrabold">98.3% optimal</span>
+          </div>
+        </div>
+
+        {/* Bento Cell 6: Matching Parameters Tracker (Target Range) */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[160px]">
           <div className="flex justify-between items-start">
             <div>
               <span className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider font-mono">Target Range</span>
@@ -613,8 +617,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Bento Cell 7: Urgent Alert Card (Coral style from Bento design template) */}
-        <div className="xl:col-span-2 bg-rose-50 border border-rose-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+        {/* Bento Cell 7: Urgent Alert Card (URGENT DEADLINES) */}
+        <div className="lg:col-span-3 bg-rose-50 border border-rose-100 rounded-3xl p-5 shadow-sm flex flex-col justify-between transition-all hover:shadow-md min-h-[160px]">
           <div className="flex justify-between items-start">
             <div className="p-2.5 bg-rose-100 rounded-2xl text-rose-600 font-bold">
               <Clock className="h-4 w-4" />
@@ -630,8 +634,34 @@ export default function App() {
           </p>
         </div>
 
-        {/* Bento Cell 8: Primary Dynamic Playground / Workspace View Execution (Span 8 cols) */}
-        <div className="xl:col-span-8 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-start transition-all md:row-span-2 shadow-indigo-50/10 min-h-[500px]">
+        {/* Bento Cell 8: Index Logs */}
+        <div className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 p-5 flex flex-col justify-between transition-all hover:shadow-md min-h-[160px]">
+          <div className="space-y-4">
+            <span className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider font-mono">Index Logs</span>
+            
+            <div className="space-y-3.5">
+              <div>
+                <div className="text-3xl font-black text-slate-800 font-display">8,124</div>
+                <div className="text-[9px] text-slate-400 uppercase font-extrabold tracking-wider font-mono">Files Indexed</div>
+              </div>
+              <div className="h-px bg-slate-100" />
+              <div>
+                <div className="text-3xl font-black text-slate-800 font-display">24</div>
+                <div className="text-[9px] text-slate-400 uppercase font-extrabold tracking-wider font-mono">Approved Drafts</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100/70 text-[10px] uppercase font-mono tracking-wider font-bold text-slate-400 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+            Telemetry Online
+          </div>
+        </div>
+
+        {/* ROW 3: Coordinator Orchestrator Workspace (Full Width) */}
+
+        {/* Bento Cell 9: Primary Dynamic Playground / Coordinator Orchestrator Workspace */}
+        <div className="lg:col-span-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col justify-start transition-all shadow-indigo-50/10">
           
           {/* Main Controls Header of active workshop */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-150 pb-4 mb-4 gap-4">
@@ -700,13 +730,13 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="flex flex-col gap-5 flex-1"
+                  className="flex flex-col gap-5"
                 >
                   {/* Split terminal logs + result preview */}
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-1">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
                     
-                    {/* Live Terminal Log Stream styled exactly like the bento page's dark theme cell */}
-                    <div className="lg:col-span-5 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 p-4 shadow-inner flex flex-col h-[380px] lg:h-full min-h-[340px]">
+                    {/* Live Terminal Log Stream — fixed height, scrollable */}
+                    <div className="lg:col-span-4 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 p-4 shadow-inner flex flex-col h-[450px]">
                       <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
                         <div className="flex items-center gap-1.5 text-slate-300">
                           <Terminal className="h-3.5 w-3.5 text-emerald-400" />
@@ -743,15 +773,15 @@ export default function App() {
                     </div>
 
                     {/* Result Content viewer */}
-                    <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-5 shadow-inner flex flex-col h-[380px] lg:h-full min-h-[340px]">
+                    <div className="lg:col-span-8 bg-white rounded-2xl border border-slate-200 p-5 shadow-inner flex flex-col h-[450px]">
                       {coordinatorResult ? (
                         <div className="flex flex-col h-full justify-between">
                           
                           {/* Inner Tabs */}
-                          <div className="flex border-b border-slate-100 pb-2.5 mb-3 gap-1.5 shrink-0">
+                          <div className="flex border-b border-slate-100 pb-2.5 mb-3 gap-1.5 shrink-0 overflow-x-auto">
                             <button
                               onClick={() => setSelectedResultSubTab("final")}
-                              className={`px-3 py-1.5 text-[11px] font-bold rounded-lg transition-colors flex items-center gap-1.5 uppercase tracking-wider ${
+                              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                                 selectedResultSubTab === "final" 
                                   ? "bg-slate-900 text-white" 
                                   : "text-slate-500 hover:text-slate-900 bg-slate-50"
@@ -762,7 +792,7 @@ export default function App() {
                             </button>
                             <button
                               onClick={() => setSelectedResultSubTab("rawDraft")}
-                              className={`px-3 py-1.5 text-[11px] font-bold rounded-lg transition-colors flex items-center gap-1.5 uppercase tracking-wider ${
+                              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                                 selectedResultSubTab === "rawDraft" 
                                   ? "bg-slate-900 text-white" 
                                   : "text-slate-500 hover:text-slate-900 bg-slate-50"
@@ -773,7 +803,7 @@ export default function App() {
                             </button>
                             <button
                               onClick={() => setSelectedResultSubTab("grants")}
-                              className={`px-3 py-1.5 text-[11px] font-bold rounded-lg transition-colors flex items-center gap-1.5 uppercase tracking-wider ${
+                              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                                 selectedResultSubTab === "grants" 
                                   ? "bg-slate-900 text-white" 
                                   : "text-slate-500 hover:text-slate-900 bg-slate-50"
@@ -1084,32 +1114,10 @@ export default function App() {
 
         </div>
 
-        {/* Bento Cell 9: Wide Workflow Document Control Summary (Span 2 cols) */}
-        <div className="xl:col-span-2 bg-white rounded-3xl border border-slate-200 p-6 flex flex-col justify-between transition-all hover:shadow-md">
-          <div className="space-y-4">
-            <span className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider font-mono">Index Logs</span>
-            
-            <div className="space-y-3.5">
-              <div>
-                <div className="text-3xl font-black text-slate-800 font-display">8,124</div>
-                <div className="text-[9px] text-slate-400 uppercase font-extrabold tracking-wider font-mono">Files Indexed</div>
-              </div>
-              <div className="h-px bg-slate-100" />
-              <div>
-                <div className="text-3xl font-black text-slate-800 font-display">24</div>
-                <div className="text-[9px] text-slate-400 uppercase font-extrabold tracking-wider font-mono">Approved Drafts</div>
-              </div>
-            </div>
-          </div>
+        {/* ROW 4: Active Agent Inference Activity (Full Width) */}
 
-          <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100/70 text-[10px] uppercase font-mono tracking-wider font-bold text-slate-400 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-            Telemetry Online
-          </div>
-        </div>
-
-        {/* Bento Cell 10: Dynamic Simulated Match Inference Activity Bar (Span 12 cols - Wide) */}
-        <div className="xl:col-span-12 bg-white rounded-3xl border border-slate-200 p-6 flex flex-col transition-all hover:shadow-md">
+        {/* Bento Cell 10: Dynamic Simulated Match Inference Activity Bar */}
+        <div className="lg:col-span-12 bg-white rounded-3xl border border-slate-200 p-5 flex flex-col transition-all hover:shadow-md">
           <div className="flex justify-between items-center mb-4">
             <div>
               <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 font-mono flex items-center gap-1.5">
