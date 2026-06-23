@@ -23,6 +23,7 @@ dependencies = [
     "imageio>=2.37.3",
     "imageio-ffmpeg>=0.6.0",
     "pillow>=12.2.0",
+    "mcp>=1.28.0",
 ]
 requires-python = ">=3.11,<3.14"
 

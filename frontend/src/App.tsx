@@ -11,6 +11,7 @@ import {
   ChevronRight, 
   Lock, 
   Eye, 
+  EyeOff,
   FileText, 
   Cpu, 
   Sparkles,
@@ -25,7 +26,10 @@ import {
   TrendingUp,
   Sliders,
   Database,
-  Info
+  Info,
+  LogIn,
+  User,
+  Mail
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ReactMarkdown from "react-markdown";
@@ -69,6 +73,15 @@ const PRESETS = [
 ];
 
 export default function App() {
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
+  const [authUsername, setAuthUsername] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [authSuccess, setAuthSuccess] = useState<string | null>(null);
+
   // Global App configuration and status
   const [geminiConfigured, setGeminiConfigured] = useState<boolean | null>(null);
   const [activeTab, setActiveTab] = useState<"coordinator" | "researcher" | "writer" | "reviewer">("coordinator");
@@ -275,6 +288,203 @@ export default function App() {
     }
   };
 
+  // Auth handler
+  const handleAuth = () => {
+    setAuthError(null);
+    setAuthSuccess(null);
+    if (authMode === "signup") {
+      // Simulate signup — just switch to signin
+      if (!authUsername.trim() || !authPassword.trim()) {
+        setAuthError("Please fill in all fields.");
+        return;
+      }
+      setAuthSuccess("Account created! Please sign in.");
+      setAuthMode("signin");
+      setAuthUsername("");
+      setAuthPassword("");
+      return;
+    }
+    if (authUsername === "urvashi933" && authPassword === "urvashi933") {
+      setIsAuthenticated(true);
+    } else {
+      setAuthError("Invalid credentials. Please try again.");
+    }
+  };
+
+  const handleGoogleSignIn = () => {
+    // Simulate Google OAuth
+    setIsAuthenticated(true);
+  };
+
+  // ─── AUTH SCREEN ───
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950 selection:bg-indigo-500 selection:text-white">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-[-30%] left-[-10%] w-[60vw] h-[60vw] bg-indigo-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: "6s" }} />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-violet-600/25 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: "8s" }} />
+          <div className="absolute top-[20%] right-[15%] w-[30vw] h-[30vw] bg-cyan-500/15 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: "10s" }} />
+        </div>
+
+        {/* Glassmorphism card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative z-10 w-full max-w-md mx-4"
+        >
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl shadow-black/20">
+            {/* Logo */}
+            <div className="flex flex-col items-center mb-8">
+              <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl font-display shadow-lg shadow-indigo-500/40 mb-4">
+                G
+              </div>
+              <h1 className="text-2xl font-black tracking-tight text-white font-display">
+                Grant Match <span className="text-indigo-400">Agent</span>
+              </h1>
+              <p className="text-xs text-slate-400 mt-1 font-medium">ReAct Protocol Multi-Agent Intelligence System</p>
+            </div>
+
+            {/* Mode Toggle */}
+            <div className="flex bg-white/5 border border-white/10 rounded-2xl p-1 mb-6">
+              <button
+                onClick={() => { setAuthMode("signin"); setAuthError(null); setAuthSuccess(null); }}
+                className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all ${
+                  authMode === "signin"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/30"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => { setAuthMode("signup"); setAuthError(null); setAuthSuccess(null); }}
+                className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all ${
+                  authMode === "signup"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/30"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Sign Up
+              </button>
+            </div>
+
+            {/* Error / Success Messages */}
+            <AnimatePresence mode="wait">
+              {authError && (
+                <motion.div
+                  key="error"
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className="mb-4 p-3 bg-rose-500/15 border border-rose-500/30 rounded-xl text-rose-300 text-xs font-medium flex items-center gap-2"
+                >
+                  <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                  {authError}
+                </motion.div>
+              )}
+              {authSuccess && (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className="mb-4 p-3 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs font-medium flex items-center gap-2"
+                >
+                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                  {authSuccess}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Form Fields */}
+            <div className="space-y-4 mb-6">
+              {authMode === "signup" && (
+                <div className="relative">
+                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-slate-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition-all"
+                  />
+                </div>
+              )}
+              <div className="relative">
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+                <input
+                  type="text"
+                  value={authUsername}
+                  onChange={(e) => setAuthUsername(e.target.value)}
+                  placeholder="Username"
+                  onKeyDown={(e) => e.key === "Enter" && handleAuth()}
+                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-slate-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition-all"
+                />
+              </div>
+              <div className="relative">
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  placeholder="Password"
+                  onKeyDown={(e) => e.key === "Enter" && handleAuth()}
+                  className="w-full pl-11 pr-11 py-3 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-slate-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition-all"
+                />
+                <button
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors"
+                  type="button"
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              onClick={handleAuth}
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/40 active:scale-[0.98] flex items-center justify-center gap-2"
+            >
+              <LogIn className="h-4 w-4" />
+              {authMode === "signin" ? "Sign In" : "Create Account"}
+            </button>
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-6">
+              <div className="flex-1 h-px bg-white/10" />
+              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">or continue with</span>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
+
+            {/* Google Sign In */}
+            <button
+              onClick={handleGoogleSignIn}
+              className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-3"
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Sign in with Google
+            </button>
+
+            {/* Footer hint */}
+            <p className="text-center text-[10px] text-slate-600 mt-6 leading-relaxed">
+              {authMode === "signin" 
+                ? "Enter your credentials to access the agent dashboard."
+                : "Create an account to start using the platform."
+              }
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // ─── MAIN DASHBOARD ───
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans p-4 md:p-6 lg:p-8 flex flex-col justify-start selection:bg-indigo-600 selection:text-white">
       
